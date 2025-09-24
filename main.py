@@ -13,14 +13,18 @@ while True:
     print("2. Cari mahasiswa (Linear Search)")
     print("3. Cari mahasiswa (Binary Search)")
     print("4. Tambah mahasiswa baru")
-    print("5. Keluar")
+    print("5. Hapus mahasiswa")
+    print("6. Keluar")
 
-    pilihan = input("Pilih menu (1-5): ")
+    pilihan = input("Pilih menu (1-6): ")
 
     if pilihan == "1":
         print("\nDaftar Mahasiswa:")
-        for i, m in enumerate(mahasiswa):
-            print(f"{i+1}. {m}")
+        if len(mahasiswa) == 0:
+            print("⚠️ Belum ada data mahasiswa.")
+        else:
+            for i, m in enumerate(mahasiswa):
+                print(f"{i+1}. {m}")
 
     elif pilihan == "2":
         target = input("Masukkan nama mahasiswa yang dicari: ")
@@ -41,12 +45,20 @@ while True:
     elif pilihan == "4":
         nama_baru = input("Masukkan nama mahasiswa baru: ")
         if nama_baru not in mahasiswa:
-            mahasiswa.append(nama_baru)  
+            mahasiswa.append(nama_baru)
             print(f"✅ {nama_baru} berhasil ditambahkan!")
         else:
             print("⚠️ Nama sudah ada dalam daftar!")
 
     elif pilihan == "5":
+        nama_hapus = input("Masukkan nama mahasiswa yang ingin dihapus: ")
+        if nama_hapus in mahasiswa:
+            mahasiswa.remove(nama_hapus)
+            print(f"🗑️ {nama_hapus} berhasil dihapus!")
+        else:
+            print("⚠️ Nama tidak ditemukan!")
+
+    elif pilihan == "6":
         print("Terima kasih, program selesai.")
         break
 
